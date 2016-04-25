@@ -3,12 +3,11 @@ import pandas as pd
 import urllib2
 from matplotlib import pyplot as plt
 
-
 class StockExample(server.App):
-    title = "VCI, TCI, VHI indexes"
+    title = "Data from NOAA portal"
 
     inputs = [{     "input_type":'dropdown',
-                    "label": 'VCI, TCI, VHI Indexes', 
+                    "label": 'Indexes', 
                     "options" : [ {"label": "VCI", "value":'VCI'},
                                   {"label": "TCI" , "value":'TCI'},
                                   {"label": "VHI", "value":'VHI'},
@@ -77,14 +76,12 @@ class StockExample(server.App):
                     "tab" : "Plot", 
                     "on_page_load" : True },
                
-               {   "output_type" : "table",
+               {    "output_type" : "table",
                     "output_id" : "table_id",
                     "control_id" : "update_data",
                     "tab" : "Table",
                     "on_page_load" : True }]
     
-    
-
     def getData(self,params):
         URL = "http://www.star.nesdis.noaa.gov/smcd/emb/vci/gvix/G04/ts_L1/ByProvince/Mean/L1_Mean_UKR.R{}.txt" 
         region = params['region']
